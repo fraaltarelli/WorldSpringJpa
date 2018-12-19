@@ -2,6 +2,8 @@ package it.objectmethod.world.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,9 +31,10 @@ public class NationController {
 	}
 	
 	@GetMapping("runNazioni/{continente}")
-	public String runNazioni(@PathVariable("continente") String continent, ModelMap model) {
+	public String runNazioni(HttpSession session, @PathVariable("continente") String continent, ModelMap model) {
 		List<Nazione> list = nazioneRepo.findByContinent(continent);
 		model.addAttribute("nationsByContinent", list);
+		session.setAttribute("continente", continent);
 		return "listaNazioni";
 	}
 

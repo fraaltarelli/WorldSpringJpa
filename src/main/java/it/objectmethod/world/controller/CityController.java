@@ -24,25 +24,28 @@ public class CityController {
 	@Autowired
 	NazioneRepository nazioneRepo;
 
-	@GetMapping("runCitta/{countryCode}/{name}")
-	String listaCitta(@PathVariable("countryCode") String countryCode, @PathVariable("name") String name, ModelMap model) {
-		List<Citta> list= cittaRepo.findByCountryCode(countryCode);
-		model.addAttribute("listaCitta", list);
-		return "listaCitta";
+	@GetMapping("runCitta/{countryCode}")
+	String listaCitta(@PathVariable("countryCode") String countryCode, ModelMap model) {
+		return "forward:/listaCittaStep/"+countryCode;
 	}
 
 	@GetMapping("runEliminaCitta/{id}/{countryCode}")
 	String eliminaCitta(@PathVariable("id") Integer id, @PathVariable("countryCode") String countryCode, ModelMap model) {
 		cittaRepo.delete(id);
-		List<Citta> list= cittaRepo.findByCountryCode(countryCode);
-		model.addAttribute("listaCitta", list);
 		model.addAttribute("messaggio", "eliminazione riuscita");
-		return "listaCitta";
+		return "forward:/listaCittaStep/"+countryCode;
 	}
 
 	@GetMapping("listaCittaCercate")
 	public String cittaCercate(@RequestParam("cittaCercata") String cittaCercata, ModelMap model) {
 		List<Citta> listaCitta = cittaRepo.findCityByPartOfName(cittaCercata);
+		model.addAttribute("listaCitta", listaCitta);
+		return "listaCitta";
+	}
+
+	@GetMapping("listaCittaStep/{countryCode}")
+	public String listaCittaStep(@PathVariable("countryCode") String countryCode, ModelMap model) {
+		List<Citta> listaCitta= cittaRepo.findByCountryCode(countryCode);
 		model.addAttribute("listaCitta", listaCitta);
 		return "listaCitta";
 	}
@@ -68,14 +71,27 @@ public class CityController {
 			@RequestParam("id") Integer id, ModelMap model) {
 		boolean errors=false;
 		String messaggio="Salvataggio riuscito";
-//		if(nome.equals("")) {
-//			errors=true;
-//			messaggio="inserire il nome della citta";
-//		}
-//		if(distretto.equals("")) {
-//			errors=true;
-//			messaggio="inserire il distretto";
-//		}
+		String ritorno="forward:/listaCittaStep/"+countryCode;
+
+		if(id== null) {
+			id=0;
+		}
+		if(nome.equals("")) {
+			errors=true;
+			messaggio="inserire il nome della citta";
+			ritorno="forward:/runAggiornamentoForm/"+id;
+		}
+		if(distretto.equals("")) {
+			errors=true;
+			messaggio="inserire il distretto";
+			ritorno="forward:/runAggiornamentoForm/"+id;
+		}
+
+		if(popolazione==null) {
+			errors=true;
+			messaggio="inserire il numero di abitanti";
+			ritorno="forward:/runAggiornamentoForm/"+id;
+		}
 		if(!errors) {
 			try{
 				Citta cittaDaSalvare= new Citta();
@@ -89,11 +105,9 @@ public class CityController {
 				messaggio="Salvataggio non riuscito";
 			}
 		}
-		List<Citta> list= cittaRepo.findByCountryCode(countryCode);
-		model.addAttribute("listaCitta", list);
 		model.addAttribute("messaggio", messaggio);
 
-		return "listaCitta";
+		return ritorno;
 	}
 
 

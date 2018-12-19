@@ -19,8 +19,9 @@
 			</tr>
 		</table>
 
+
 		<c:forEach items="${nationsByContinent}" var="nazione">
-			<a href="/runCitta/${nazione.code}/${nazione.name}">
+			<a href="/runCitta/${nazione.code}">
 				<table width="50%" border="1" align="center">
 					<tr>
 						<td width="50%">${nazione.name}</td>

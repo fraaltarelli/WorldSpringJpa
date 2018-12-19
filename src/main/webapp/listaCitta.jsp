@@ -12,9 +12,18 @@
 
 		<h2>${messaggio}</h2>
 
-		<br> <a href="/runContinenti">
+		<a href="/runContinenti">
 			<button>ritorna ai continenti</button> <br>
 		</a> <br>
+
+
+		<c:if test="${continente!=null}">
+			<a href="/runNazioni/${continente}">
+				<button>ritorna alle nazioni</button> <br>
+			</a>
+			<br>
+		</c:if>
+
 
 		<table width="75%" border="1" align="center">
 			<tr>

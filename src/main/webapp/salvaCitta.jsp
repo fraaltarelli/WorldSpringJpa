@@ -10,6 +10,8 @@
 <body>
 	<div style="text-align: center;">
 
+		<h2>${messaggio}</h2>
+
 		<a href="/runContinenti">
 			<button>ritorna ai continenti</button> <br>
 		</a> <br>
