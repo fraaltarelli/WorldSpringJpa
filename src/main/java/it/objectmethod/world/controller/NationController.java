@@ -17,8 +17,6 @@ import it.objectmethod.world.repository.NazioneRepository;
 @Controller
 public class NationController {
 	
-	@Autowired
-	CittaRepository cittaRepo;
 	
 	@Autowired
 	NazioneRepository nazioneRepo;

@@ -55,7 +55,7 @@ public class CityController {
 	public String aggiornamentoForm(@PathVariable("id") Integer idCitta, ModelMap model) {
 		Citta cittaDaModificare = new Citta();
 		if (idCitta != 0) {
-			cittaDaModificare = cittaRepo.findOneById(idCitta);
+			cittaDaModificare = cittaRepo.findOne(idCitta);
 		}
 		List<Nazione> list = nazioneRepo.findAll();
 		model.addAttribute("allNations", list);
