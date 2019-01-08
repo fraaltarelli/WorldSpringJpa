@@ -1,0 +1,14 @@
+#main-content {
+	width: 40%;
+    margin: auto;
+}
+
+.custom-list-element {
+	text-align: center;
+    font-family: sans-serif;
+    border: 1px solid blueviolet;
+    padding: 20px 0px;
+    background-color: aliceblue;
+    border-radius: 12px;
+    /* display: none; */
+}
