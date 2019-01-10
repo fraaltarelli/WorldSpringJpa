@@ -12,3 +12,16 @@
     border-radius: 12px;
     /* display: none; */
 }
+
+.nazione-list-element {
+	text-align: center;
+    border: 1px solid blueviolet;
+    padding: 20px 0px;
+    background-color: orange;
+    border-radius: 12px;
+    /* display: none; */
+}
+
+#formInsertUpdate {
+    visibility:hidden;
+}

@@ -7,7 +7,7 @@ function getContinents() {
 			var continents = JSON.parse(this.responseText);
 			displayContinents(continents);
 		}
-	};
+	}
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 	console.log("CHIAMATA INVIATA");
@@ -16,7 +16,9 @@ function getContinents() {
 function displayContinents(continents){
 	var html = '';
 	for(var i = 0; i < continents.length; i++){
-		html +='<p class="custom-list-element">'+continents[i]+'</p>';
+		var continent= continents[i];
+		html += '<button onclick="nationsByContinent('+"'"+ continent+"'"   +  ')" class="custom-list-element">'+continents[i]+'</button>';
+
 	}
 	document.getElementById("main-content").innerHTML = html;
 }

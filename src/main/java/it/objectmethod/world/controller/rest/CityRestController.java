@@ -40,14 +40,9 @@ public class CityRestController {
 	}
 
 	@GetMapping("citta/{countryCode}/find-by-countrycode")
-	public ResponseEntity<List<Citta>> listaCittaDacountryCode(@PathVariable("countryCode") String countryCode){
+	public List<Citta> listaCittaDacountryCode(@PathVariable("countryCode") String countryCode){
 
-		List<Citta> list = cittaRepo.findByCountryCode(countryCode);
-		if(list!=null) {
-			return new ResponseEntity<List<Citta>>(list, HttpStatus.OK);
-		}
-
-		return new ResponseEntity<List<Citta>>(list, HttpStatus.NOT_FOUND);
+		return cittaRepo.findByCountryCode(countryCode);
 	}
 	
 	@PostMapping("citta/inserisci-modifica")
