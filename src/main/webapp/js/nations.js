@@ -13,6 +13,22 @@ function nationsByContinent(continente) {
 	console.log("CHIAMATA INVIATA");
 }
 
+function allNations() {
+	var xmlhttp = new XMLHttpRequest();
+	var url = "/api/nazioni/find-all";
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log("ARRIVATA RISPOSTA!");
+			var allNations = JSON.parse(this.responseText);
+			displayCities(cities);
+		}
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+	console.log("CHIAMATA INVIATA");
+}
+
+
 function displayNations(nations){
 	var html = '';
 	for(var i = 0; i < nations.length; i++){
@@ -25,5 +41,5 @@ function displayNations(nations){
 //		button.appendChild(t);
 		html += '<button onclick="citiesByCountryCode('+"'"+ countryCode+"'"   +  ')" class="nazione-list-element">'+nationName+'</button>';
 		}
-	document.getElementById("nations").innerHTML = html;
+	document.getElementById("main-content").innerHTML = html;
 }

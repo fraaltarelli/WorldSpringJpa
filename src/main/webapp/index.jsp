@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1">
 <title>World Rest</title>
 
 <link rel="stylesheet" type="text/css" href="/css/style.css"> <!-- Import dei CSS -->
@@ -13,9 +14,12 @@
 </head>
 
 <body>
-	<div id="main-content"></div>
-	<div id="nations"></div>
-	
+
+    <div style="margin:auto; width:30%;">
+    <button class= "bottoneTipoUno" onclick='getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'> Ritorna ai continenti </button> &nbsp; 
+    <button class= "bottoneTipoUno" onclick='document.getElementById("formInsertUpdate").style.visibility="visible"'> Nuova Citta </button><br>
+    </div>
+    <div>
 	<form id="formInsertUpdate" action="runSalvaCitta">
 			<table width="75%" border="1" align="center" >
 				<tr>
@@ -42,12 +46,12 @@
 							</c:forEach>
 					</select></td>
 
-					<td width="22%"><input name="nomecittainserito" type="text"
+					<td width="22%"><input id="nomeCittaInserito" name="nomeCittaInserito" type="text"
 						value="${cittaDaModificare.name}"></td>
 
-					<td width="22%"><input name="nomedistrettoinserito"
+					<td width="22%"><input id="nomeDistrettoInserito" name="nomeDistrettoInserito"
 						type="text" value="${cittaDaModificare.district}"></td>
-					<td width="22%"><input name="popolazioneinserita"
+					<td width="22%"><input id="popolazioneInserita" name="popolazioneInserita"
 						type="number" min="0" value="${cittaDaModificare.population}">
 					</td>
 
@@ -57,13 +61,20 @@
 
 			</table>
 
-			<input name="id" type="hidden" value="${cittaDaModificare.id}">
+			<input id="idCittaForm" name="id" type="hidden" value="${cittaDaModificare.id}">
 
-			<br> <input name="SalvaCitta" type="submit" value="Salva Citta">
+			<br> 
+			
+			<div style="margin:auto; width:30%;">
+			<input name="SalvaCitta" type="submit" value="Salva Citta">
+			</div>
 
 		</form>
+		</div>
 		
-	<div id="cities"></div>
+		<div id="main-content"></div>
+		
+		
 	
 	<script type="text/javascript">
 getContinents()
