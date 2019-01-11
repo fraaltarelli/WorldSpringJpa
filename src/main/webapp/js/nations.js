@@ -13,14 +13,23 @@ function nationsByContinent(continente) {
 	console.log("CHIAMATA INVIATA");
 }
 
-function allNations() {
+function allNations(countryCode) {
 	var xmlhttp = new XMLHttpRequest();
 	var url = "/api/nazioni/find-all";
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			console.log("ARRIVATA RISPOSTA!");
 			var allNations = JSON.parse(this.responseText);
-			displayCities(cities);
+			var html="";
+			html+= '<select id="countryCodeInserito" name="countryCode">';
+			for(var i = 0; i < allNations.length; i++){
+				if(allNations[i].code==countryCode)
+					html+='<option value='+allNations[i].code+' selected>'+allNations[i].name+'</option>';
+				else
+					html+='<option value='+allNations[i].code+' >'+allNations[i].name+'</option>';
+			}
+			html+='</select>';
+			document.getElementById("allNationsFormSelect").innerHTML = html;
 		}
 	}
 	xmlhttp.open("GET", url, true);
@@ -34,12 +43,7 @@ function displayNations(nations){
 	for(var i = 0; i < nations.length; i++){
 		var nationName= nations[i].name;
 		var countryCode = nations[i].code;
-//		var button = document.createElement("BUTTON");
-//		var t = document.createTextNode(nationName);
-//		button.setAttribute("onclick",   'citiesByCountryCode('+"'"+countryCode+"'"+')';
-//		button.setAttribute("class",  "nazione-list-element");
-//		button.appendChild(t);
 		html += '<button onclick="citiesByCountryCode('+"'"+ countryCode+"'"   +  ')" class="nazione-list-element">'+nationName+'</button>';
-		}
+	}
 	document.getElementById("main-content").innerHTML = html;
 }

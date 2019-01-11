@@ -2,12 +2,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1">
+	pageEncoding="ISO-8859-1">
 <title>World Rest</title>
 
-<link rel="stylesheet" type="text/css" href="/css/style.css"> <!-- Import dei CSS -->
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<!-- Import dei CSS -->
 
-<script type="text/javascript" src="/js/continents.js"></script> <!-- Import Javascript -->
+<script type="text/javascript" src="/js/continents.js"></script>
+<!-- Import Javascript -->
 <script type="text/javascript" src="/js/nations.js"></script>
 <script type="text/javascript" src="/js/cities.js"></script>
 
@@ -15,13 +17,19 @@
 
 <body>
 
-    <div style="margin:auto; width:30%;">
-    <button class= "bottoneTipoUno" onclick='getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'> Ritorna ai continenti </button> &nbsp; 
-    <button class= "bottoneTipoUno" onclick='document.getElementById("formInsertUpdate").style.visibility="visible"'> Nuova Citta </button><br>
-    </div>
-    <div>
-	<form id="formInsertUpdate" action="runSalvaCitta">
-			<table width="75%" border="1" align="center" >
+	<div style="margin: auto; width: 30%;">
+		<button class="bottoneTipoUno"
+			onclick='document.getElementById("salvataggioRiuscito").innerHTML= ""; getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'>
+			Ritorna ai continenti</button>
+		&nbsp;
+		<button class="bottoneTipoUno"
+			onclick='document.getElementById("salvataggioRiuscito").innerHTML= ""; insertUpdateCityForm(); document.getElementById("formInsertUpdate").style.visibility="visible"'>
+			Nuova Citta</button>
+		<br>
+	</div>
+	<div>
+		<div id="formInsertUpdate">
+			<table width="75%" border="1" align="center">
 				<tr>
 					<th width="34%">Seleziona la Nazione:</th>
 					<th with="22%">Digita il nome della citta</th>
@@ -32,7 +40,8 @@
 
 			<table width="75%" border="1" align="center">
 				<tr>
-					<td width="34%"><select name="countryCode">
+					<td id="allNationsFormSelect" width="34%">
+						<!-- <select name="countryCode">
 
 							<c:forEach items="${allNations}" var="nazione">
 								<c:choose>
@@ -40,45 +49,47 @@
 										<option value="${nazione.code}" selected>${nazione.name}</option>
 									</c:when>
 									<c:otherwise>
-										<option value="${nazione.code}">${nazione.nomeNazione}</option>
+										<option value="${nazione.code}">${nazione.name}</option>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
-					</select></td>
+					</select>-->
 
-					<td width="22%"><input id="nomeCittaInserito" name="nomeCittaInserito" type="text"
-						value="${cittaDaModificare.name}"></td>
-
-					<td width="22%"><input id="nomeDistrettoInserito" name="nomeDistrettoInserito"
-						type="text" value="${cittaDaModificare.district}"></td>
-					<td width="22%"><input id="popolazioneInserita" name="popolazioneInserita"
-						type="number" min="0" value="${cittaDaModificare.population}">
 					</td>
 
+					<td width="22%"><input id="nomeCittaInserito"
+						name="nomeCittaInserito" type="text"
+						value="${cittaDaModificare.name}"></td>
 
-
+					<td width="22%"><input id="nomeDistrettoInserito"
+						name="nomeDistrettoInserito" type="text"
+						value="${cittaDaModificare.district}"></td>
+					<td width="22%"><input id="popolazioneInserita"
+						name="popolazioneInserita" type="number" min="0"
+						value="${cittaDaModificare.population}"></td>
 				</tr>
 
 			</table>
 
-			<input id="idCittaForm" name="id" type="hidden" value="${cittaDaModificare.id}">
+			<input id="idCittaForm" name="id" type="hidden"
+				value="${cittaDaModificare.id}"> <br>
 
-			<br> 
-			
-			<div style="margin:auto; width:30%;">
-			<input name="SalvaCitta" type="submit" value="Salva Citta">
+			<div style="margin: auto; width: 30%;">
+				<button onclick="preInsertUpdateCity()">Salva Citta</button>
 			</div>
 
-		</form>
 		</div>
-		
-		<div id="main-content"></div>
-		
-		
-	
+	</div>
+
+	<div id="salvataggioRiuscito" style="margin: auto; width: 30%;">
+	</div>
+	<div id="main-content"></div>
+
+
+
 	<script type="text/javascript">
-getContinents()
-</script>
+		getContinents()
+	</script>
 
 </body>
 
