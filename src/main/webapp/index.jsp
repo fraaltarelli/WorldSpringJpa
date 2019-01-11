@@ -19,12 +19,15 @@
 
 	<div style="margin: auto; width: 30%;">
 		<button class="bottoneTipoUno"
-			onclick='document.getElementById("salvataggioRiuscito").innerHTML= ""; getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'>
+			onclick='document.getElementById("messaggioForm").innerHTML= ""; getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'>
 			Ritorna ai continenti</button>
 		&nbsp;
 		<button class="bottoneTipoUno"
-			onclick='document.getElementById("salvataggioRiuscito").innerHTML= ""; insertUpdateCityForm(); document.getElementById("formInsertUpdate").style.visibility="visible"'>
+			onclick='document.getElementById("messaggioForm").innerHTML= ""; insertUpdateCityForm(); document.getElementById("formInsertUpdate").style.visibility="visible"'>
 			Nuova Citta</button>
+			<br>
+			<input id="ricercaCittaText" type="text" value="">
+			<button id="cercaCitta" onclick="cercaCitta()"> Cerca Citta </button>
 		<br>
 	</div>
 	<div>
@@ -59,20 +62,20 @@
 
 					<td width="22%"><input id="nomeCittaInserito"
 						name="nomeCittaInserito" type="text"
-						value="${cittaDaModificare.name}"></td>
+						value=""></td>
 
 					<td width="22%"><input id="nomeDistrettoInserito"
 						name="nomeDistrettoInserito" type="text"
-						value="${cittaDaModificare.district}"></td>
+						value=""></td>
 					<td width="22%"><input id="popolazioneInserita"
-						name="popolazioneInserita" type="number" min="0"
-						value="${cittaDaModificare.population}"></td>
+						name="popolazioneInserita" type="number" min="-5"
+						value=""></td>
 				</tr>
 
 			</table>
 
 			<input id="idCittaForm" name="id" type="hidden"
-				value="${cittaDaModificare.id}"> <br>
+				value=""> <br>
 
 			<div style="margin: auto; width: 30%;">
 				<button onclick="preInsertUpdateCity()">Salva Citta</button>
@@ -81,7 +84,7 @@
 		</div>
 	</div>
 
-	<div id="salvataggioRiuscito" style="margin: auto; width: 30%;">
+	<div id="messaggioForm" style="margin: auto; width: 30%;">
 	</div>
 	<div id="main-content"></div>
 
