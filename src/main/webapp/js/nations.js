@@ -1,16 +1,30 @@
+//function nationsByContinent(continente) {
+//	var xmlhttp = new XMLHttpRequest();
+//	var url = "/api/nazioni/"+continente+"/by-continent";
+//	xmlhttp.onreadystatechange = function() {
+//		if (this.readyState == 4 && this.status == 200) {
+//			console.log("ARRIVATA RISPOSTA!");
+//			var nations = JSON.parse(this.responseText);
+//			displayNations(nations);
+//		}
+//	}
+//	xmlhttp.open("GET", url, true);
+//	xmlhttp.send();
+//	console.log("CHIAMATA INVIATA");
+//}
+
 function nationsByContinent(continente) {
-	var xmlhttp = new XMLHttpRequest();
-	var url = "/api/nazioni/"+continente+"/by-continent";
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			console.log("ARRIVATA RISPOSTA!");
-			var nations = JSON.parse(this.responseText);
+	$.ajax({
+		type: "GET",
+		url: "/api/nazioni/"+continente+"/by-continent",
+		cache: false,
+		dataType: "json",
+		success: function (data) { 
+			var nations = data;
 			displayNations(nations);
 		}
-	}
-	xmlhttp.open("GET", url, true);
-	xmlhttp.send();
-	console.log("CHIAMATA INVIATA");
+
+	});
 }
 
 function allNations(countryCode) {
@@ -43,7 +57,7 @@ function displayNations(nations){
 	for(var i = 0; i < nations.length; i++){
 		var nationName= nations[i].name;
 		var countryCode = nations[i].code;
-		html += '<button onclick="citiesByCountryCode('+"'"+ countryCode+"'"   +  ')" class="nazione-list-element">'+nationName+'</button>';
+		html += '<button onclick="citiesByCountryCode('+"'"+ countryCode+"'"   +  ')" class="btn btn-secondary btn-lg">'+nationName+'</button>';
 	}
 	document.getElementById("main-content").innerHTML = html;
 }

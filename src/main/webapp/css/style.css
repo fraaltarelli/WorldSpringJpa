@@ -1,4 +1,4 @@
-#main-content {
+/* #main-content {
 	width: 40%;
 	margin: auto;
 }
@@ -10,7 +10,7 @@
 	padding: 20px 0px;
 	background-color: #8080ff;
 	border-radius: 12px;
-	/* display: none; */
+	display: none;
 }
 
 .bottoneTipoUno {
@@ -20,7 +20,7 @@
 	padding: 10px 0px;
 	background-color: #00ff40;
 	border-radius: 15px;
-	/* display: none; */
+	display: none;
 }
 
 .nazione-list-element {
@@ -29,10 +29,11 @@
 	padding: 20px 0px;
 	background-color: orange;
 	border-radius: 12px;
-	/* display: none; */
+	display: none;
 }
+
+*/
 
 #formInsertUpdate {
 	visibility: hidden;
 }
-

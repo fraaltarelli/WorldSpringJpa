@@ -27,33 +27,35 @@
 
 <body>
 
-	<div style="margin: auto; width: 30%;">
-		<button class="bottoneTipoUno"
+	<div class="row justify-content-center">
+		<button type="button"
+			onclick='$("#messaggioForm").text(""); getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'
+			class="btn btn-danger">Ritorna ai continenti</button>
+		<!-- button class="bottoneTipoUno"
 			onclick='document.getElementById("messaggioForm").innerHTML= ""; getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'>
-			Ritorna ai continenti</button>
+			Ritorna ai continenti</button> -->
 		&nbsp;
-		<button class="bottoneTipoUno"
-			onclick='document.getElementById("messaggioForm").innerHTML= ""; insertUpdateCityForm(); document.getElementById("formInsertUpdate").style.visibility="visible"'>
+		<button type="button" class="btn btn-warning"
+			onclick='$("#messaggioForm").text(""); insertUpdateCityForm(); document.getElementById("formInsertUpdate").style.visibility="visible"'>
 			Nuova Citta</button>
-		<br> <input id="ricercaCittaText" type="text" value="">
+		 &nbsp;&nbsp;<input id="ricercaCittaText" type="text" value="">
 		<button id="cercaCitta" onclick="cercaCitta()">Cerca Citta</button>
-		<br>
-	</div>
-	<div>
+		
 		<div id="formInsertUpdate">
-			<table width="75%" border="1" align="center">
-				<tr>
-					<th width="34%">Seleziona la Nazione:</th>
-					<th width="22%">Digita il nome della citta</th>
-					<th width="22%">Digita il nome del distretto</th>
-					<th width="22%">Digita il numero di abitanti</th>
-				</tr>
-			</table>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Seleziona la Nazione:</th>
+						<th scope="col">Digita il nome della citta</th>
+						<th scope="col">Digita il nome del distretto</th>
+						<th scope="col">Digita il numero di abitanti</th>
+					</tr>
+				</thead>
 
-			<table width="75%" border="1" align="center">
-				<tr>
-					<td id="allNationsFormSelect" width="34%">
-						<!-- <select name="countryCode">
+				<tbody>
+					<tr>
+						<td id="allNationsFormSelect">
+							<!-- <select name="countryCode">
 
 							<c:forEach items="${allNations}" var="nazione">
 								<c:choose>
@@ -67,30 +69,33 @@
 							</c:forEach>
 					</select>-->
 
-					</td>
+						</td>
 
-					<td width="22%"><input id="nomeCittaInserito"
-						name="nomeCittaInserito" type="text" value=""></td>
+						<td><input id="nomeCittaInserito" name="nomeCittaInserito"
+							type="text" value=""></td>
 
-					<td width="22%"><input id="nomeDistrettoInserito"
-						name="nomeDistrettoInserito" type="text" value=""></td>
-					<td width="22%"><input id="popolazioneInserita"
-						name="popolazioneInserita" type="number" min="-5" value=""></td>
-				</tr>
+						<td><input id="nomeDistrettoInserito"
+							name="nomeDistrettoInserito" type="text" value=""></td>
+						<td><input id="popolazioneInserita"
+							name="popolazioneInserita" type="number" min="-5" value=""></td>
+					</tr>
 
+
+					<tr>
+						<td><input id="idCittaForm" name="id" type="hidden" value="">
+							<button onclick="preInsertUpdateCity()">Salva Citta</button></td>
+					</tr>
+					<tr>
+					<td>
+						<div id="messaggioForm"></div>
+						</td>
+					</tr>
+				</tbody>
 			</table>
-
-			<input id="idCittaForm" name="id" type="hidden" value=""> <br>
-
-			<div style="margin: auto; width: 30%;">
-				<button onclick="preInsertUpdateCity()">Salva Citta</button>
-			</div>
-
 		</div>
-	</div>
 
-	<div id="messaggioForm" style="margin: auto; width: 30%;"></div>
-	<div id="main-content"></div>
+		<div id="main-content"></div>
+	</div>
 
 
 
@@ -100,10 +105,6 @@
 
 
 
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
 		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
