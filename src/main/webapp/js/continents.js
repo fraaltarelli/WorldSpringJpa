@@ -13,6 +13,10 @@
 //	console.log("CHIAMATA INVIATA");
 //}
 
+$(document).ready(function(){
+  getContinents();
+});
+
 function getContinents() {
 	$.ajax({
 		type: "GET",
@@ -31,8 +35,15 @@ function displayContinents(continents){
 	var html = '';
 	for(var i = 0; i < continents.length; i++){
 		var continent= continents[i];
-		html += '<button onclick="nationsByContinent('+"'"+ continent+"'"   +  ')" class="btn btn-primary btn-lg">'+continents[i]+'</button>';
+		html += '<div> <button onclick="nationsByContinent('+"'"+ continent+"'"   +  ')" class="btn btn-primary btn-lg btn-custom-center">'+continents[i]+'</button></div>';
 
 	}
-	document.getElementById("main-content").innerHTML = html;
+	$("#main-content").html(html);
+}
+
+function goToHomePage(){
+	$("#messaggioForm").text(""); 
+	getContinents(); 
+//	document.getElementById("formInsertUpdate").style.visibility="hidden"
+	$("#formInsertUpdate").hide();
 }

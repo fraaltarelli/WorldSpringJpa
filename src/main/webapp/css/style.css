@@ -34,6 +34,12 @@
 
 */
 
+.btn-custom-center {
+	display: block;
+    width: 80%;
+    margin: 10px auto;
+}
+
 #formInsertUpdate {
-	visibility: hidden;
+	display: none;
 }

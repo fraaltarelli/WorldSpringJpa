@@ -27,20 +27,21 @@
 
 <body>
 
-	<div class="row justify-content-center">
-		<button type="button"
-			onclick='$("#messaggioForm").text(""); getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'
-			class="btn btn-danger">Ritorna ai continenti</button>
-		<!-- button class="bottoneTipoUno"
+	<div class="container">
+		<div class="row justify-content-center">
+			<button type="button"
+				onclick='goToHomePage()'
+				class="btn btn-danger">Ritorna ai continenti</button>
+			<!-- button class="bottoneTipoUno"
 			onclick='document.getElementById("messaggioForm").innerHTML= ""; getContinents(); document.getElementById("formInsertUpdate").style.visibility="hidden"'>
 			Ritorna ai continenti</button> -->
-		&nbsp;
-		<button type="button" class="btn btn-warning"
-			onclick='$("#messaggioForm").text(""); insertUpdateCityForm(); document.getElementById("formInsertUpdate").style.visibility="visible"'>
-			Nuova Citta</button>
-		 &nbsp;&nbsp;<input id="ricercaCittaText" type="text" value="">
-		<button id="cercaCitta" onclick="cercaCitta()">Cerca Citta</button>
-		
+			&nbsp;
+			<button type="button" class="btn btn-warning"
+				onclick='showFormCreateCity()'>
+				Nuova Citta</button>
+			&nbsp;&nbsp;<input id="ricercaCittaText" type="text" value="">
+			<button id="cercaCitta" onclick="cercaCitta()">Cerca Citta</button>
+		</div>
 		<div id="formInsertUpdate">
 			<table class="table">
 				<thead>
@@ -77,7 +78,7 @@
 						<td><input id="nomeDistrettoInserito"
 							name="nomeDistrettoInserito" type="text" value=""></td>
 						<td><input id="popolazioneInserita"
-							name="popolazioneInserita" type="number" min="-5" value=""></td>
+							name="popolazioneInserita" type="number" min="0" value=""></td>
 					</tr>
 
 
@@ -86,22 +87,17 @@
 							<button onclick="preInsertUpdateCity()">Salva Citta</button></td>
 					</tr>
 					<tr>
-					<td>
-						<div id="messaggioForm"></div>
+						<td>
+							<div id="messaggioForm"></div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
 		<div id="main-content"></div>
 	</div>
+	
 
-
-
-	<script type="text/javascript">
-		getContinents()
-	</script>
 
 
 
